@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/Home'
-import Account from './components/Account'
+//import Account from './components/Account'
 import './App.css';
 
 
@@ -12,7 +12,6 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/account' element={<Account/>}/>
       </Routes>
     </Router>
     </div>
