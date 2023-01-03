@@ -1,14 +1,17 @@
 import React, {useState, useRef} from 'react';
 import { connect, Connection, Token } from "@tableland/sdk";
 import * as Cookies from 'js-cookie';
-import {connectToTableland} from './NewUser'
+
 
 function NewPassword() {
 	const inputRefName = useRef<HTMLInputElement>(null);
 	const inputRefValue = useRef<HTMLInputElement>(null);
 	const [pwName, setPwName] = useState('')
 	const [pwValue, setPwValue] = useState('')
-	const [pwList, setPwList] = useState([])
+	//const [pwList, setPwList] = useState([])
+
+	//TO DO: add a function to get the list of passwords from the tableland table
+
 
 	const handleNewName = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
@@ -31,7 +34,7 @@ function NewPassword() {
 		if (cookie !== undefined) {
 			const token: Token = {token: cookie}
 			console.log('attempting connect')
-			const tableland = await connect({network: "testnet", chain: "polygon-mumbai", token: token})
+			const tableland: Connection = await connect({network: "testnet", chain: "polygon-mumbai", token: token})
 			console.log(tableland)
 			const tables = await tableland.list()
 			const table = tables[0].name
